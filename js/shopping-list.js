@@ -1,4 +1,4 @@
-let Item = require('../js/shopping-list-item.js');
+// let Item = require('../js/shopping-list-item.js');
 
 class List {
   constructor() {
@@ -41,4 +41,4 @@ class List {
   }
 }
 
-module.exports = List
+// module.exports = List

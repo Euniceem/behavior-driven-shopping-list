@@ -16,6 +16,7 @@ class Item {
     let end = '</li>';
     let spanStart = '<span>';
     let spanEnd = '</span>';
+    let removeButton = "<button onclick='removeItemButtonClicked(" + num + ")'>X</button>"
 
     let listItem = spanStart + this.name + spanEnd;
     listItem += spanStart + this.description + spanEnd;
@@ -28,7 +29,7 @@ class Item {
       checkBox = "<input type = 'checkbox' onchange ='changeCheckedStatus(" + num + ",this)' Checked>";
     }
 
-    return start + checkBox + listItem + end;
+    return start + checkBox + listItem + removeButton + end;
   }
 }
 

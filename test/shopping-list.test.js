@@ -52,7 +52,6 @@ describe("Shopping list Item", function () {
 
   describe("has a method named render", function () {
     let steak = new Item('steak', 't-bone steak');
-    console.log(steak.render())
     it("should be a function", function () {
       expect(steak.render).to.be.a("function");
     })
@@ -99,7 +98,7 @@ describe('Shopping list', function () {
       expect(shoppingList.items[0]).to.deep.equal(steak);
     })
     it("should return an error with anything other than an Item object", function () {
-      expect(shoppingList.addItem('cookies')).to.throw();
+      expect(shoppingList.addItem.bind(shoppingList, 'cookies')).to.throw();
     })
   })
   describe("has a method named removeItem", function () {
@@ -110,6 +109,7 @@ describe('Shopping list', function () {
     it("should remove an Item object from the items array", function () {
       let steak = new Item('steak', 't-bone steak');
       let cookies = new Item('cookies', 'chocolate chip');
+      shoppingList.items.length = 0;
       shoppingList.addItem(steak);
       shoppingList.addItem(cookies);
       shoppingList.removeItem(steak);
@@ -118,38 +118,45 @@ describe('Shopping list', function () {
     it("should return an error if item does not exist in the list", function () {
       let steak = new Item('steak', 't-bone steak');
       let cookies = new Item('cookies', 'chocolate chip');
+      shoppingList.items.length = 0;
       shoppingList.addItem(cookies);
-      expect(shoppingList.removeItem(steak)).to.throw();
+      expect(shoppingList.removeItem.bind(shoppingList, steak)).to.throw();
     })
     it("should remove the last item in the list if there is no input", function () {
       let steak = new Item('steak', 't-bone steak');
       let cookies = new Item('cookies', 'chocolate chip');
+      shoppingList.items.length = 0;
       shoppingList.addItem(cookies);
       shoppingList.addItem(steak);
       shoppingList.removeItem();
       expect(shoppingList.items[1]).to.equal(undefined);
     })
     it("should return an error with anything other than an Item object", function () {
-      expect(shoppingList.removeItem('cookies')).to.throw();
+      expect(shoppingList.removeItem.bind(shoppingList, 'cookies')).to.throw();
     })
   })
 
   describe("has a method named render", function () {
     let shoppingList = new List();
+    let steak = new Item('steak', 't-bone steak');
+    let cookies = new Item('cookies', 'chocolate chip');
+    shoppingList.addItem(cookies);
+    shoppingList.addItem(steak);
     it("should be a function", function () {
       expect(shoppingList.render).to.be.a("function");
     })
 
     it("should return a string", function () {
+      shoppingList.render();
       expect(shoppingList.render()).to.be.a("string");
     })
 
-    it("should start with an <li tag", function () {
-      expect(shoppingList.render().slice(0, 3)).to.equal('<li');
+    it("should start with an <ul> tag", function () {
+      expect(shoppingList.render().slice(0, 4)).to.equal('<ul>');
 
     })
-    it("should end with an </li> tag", function () {
-      expect(shoppingList.render().slice(-5)).to.equal('</li>');
+    it("should end with an </ul> tag", function () {
+      expect(shoppingList.render().slice(-5)).to.equal('</ul>');
     })
   })
 })

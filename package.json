@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alexithemia/behavior-driven-shopping-list.git"
+    "url": "git+https://github.com/Euniceem/behavior-driven-shopping-list"
   },
   "author": "Tyler and Eunice",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Alexithemia/behavior-driven-shopping-list/issues"
+    "url": "https://github.com/Euniceem/behavior-driven-shopping-list/issues"
   },
-  "homepage": "https://github.com/Alexithemia/behavior-driven-shopping-list#readme",
+  "homepage": "https://github.com/Euniceem/behavior-driven-shopping-list#readme",
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0"

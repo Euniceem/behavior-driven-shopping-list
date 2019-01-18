@@ -34,7 +34,7 @@ class List {
     let tempList = '';
 
     for (var i = 0; i < this.items.length; i++) {
-      tempList = tempList.concat(this.items[i].render());
+      tempList = tempList.concat(this.items[i].render(i));
 
     }
     return start + tempList + end;

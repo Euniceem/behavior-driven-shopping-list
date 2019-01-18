@@ -10,19 +10,25 @@ class Item {
   uncheck() {
     this.isDone = false;
   }
-  render() {
+  render(num) {
+    let checkBox;
     let start;
-    if (this.isDone === false) {
-      start = "<li class='completed_false'>";
-    } else if (this.isDone === true) {
-      start = "<li class='completed_true'>";
-    }
     let end = '</li>';
     let spanStart = '<span>';
     let spanEnd = '</span>';
+
     let listItem = spanStart + this.name + spanEnd;
     listItem += spanStart + this.description + spanEnd;
-    return start + listItem + end;
+
+    if (this.isDone === false) {
+      start = "<li class='completed_false'>";
+      checkBox = "<input type = 'checkbox' onchange ='changeCheckedStatus(" + num + ",this)' >";
+    } else if (this.isDone === true) {
+      start = "<li class='completed_true'>";
+      checkBox = "<input type = 'checkbox' onchange ='changeCheckedStatus(" + num + ",this)' Checked>";
+    }
+
+    return start + checkBox + listItem + end;
   }
 }
 
